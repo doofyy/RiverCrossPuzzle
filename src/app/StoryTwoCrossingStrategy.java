@@ -6,7 +6,6 @@ public class StoryTwoCrossingStrategy implements ICrossingStrategy {
 	Instructions instructions;
 
 	public StoryTwoCrossingStrategy() {
-		super();
 		instructions = new StoryTwoInstructions();
 	}
 

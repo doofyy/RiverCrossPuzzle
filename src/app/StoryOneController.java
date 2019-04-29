@@ -31,8 +31,8 @@ public class StoryOneController implements IRiverCrossingController{
 
 	@Override
 	public String[] getInstructions() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return crossingStrategy.getInstructions();
 	}
 
 	@Override
