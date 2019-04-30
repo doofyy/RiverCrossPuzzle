@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -18,10 +19,10 @@ import javafx.stage.Stage;
 
 public class MainMenuController implements Initializable {
 
-	public ImageView imageView;
-	public Button newGame;
-	public Button loadGame;
-	public Button exit;
+	@FXML public ImageView imageView;
+	@FXML public Button newGame;
+	@FXML public Button loadGame;
+	@FXML public Button exit;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
