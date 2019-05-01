@@ -10,6 +10,11 @@ public class Plant implements ICrosser {
 
 	private double weight;
 	public static final int eatingRank = 0;
+	public Plant(double weight) {
+		super();
+		this.weight = weight;
+	}
+
 	@Override
 	public boolean canSail() {
 		// TODO Auto-generated method stub

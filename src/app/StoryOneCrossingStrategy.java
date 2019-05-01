@@ -1,9 +1,16 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StoryOneCrossingStrategy implements ICrossingStrategy {
 	Instructions instructions;
+	CrosserFactory crosserFactory = new CrosserFactory();
+	ICrosser farmer = crosserFactory.newCrosser("FARMER", 100);
+	ICrosser carnivore = crosserFactory.newCrosser("CARNIVORE",100);
+	ICrosser herbivore = crosserFactory.newCrosser("HERBIVORE",100);
+	ICrosser plant = crosserFactory.newCrosser("PLANT",100);
+	ArrayList<ICrosser> initialCrossers = new ArrayList<ICrosser>();
 	
 	public StoryOneCrossingStrategy() {
 		instructions =  new StoryOneInstructions();
@@ -22,14 +29,14 @@ public class StoryOneCrossingStrategy implements ICrossingStrategy {
 		
 		// left bank validation
 		if(leftBankCrossers.size() == 2) {
-			if(Math.abs(leftBankCrossers.get(0).getEatingRank() - leftBankCrossers.get(0).getEatingRank()) == 1) {
+			if(Math.abs(leftBankCrossers.get(0).getEatingRank() - leftBankCrossers.get(1).getEatingRank()) == 1) {
 				return false;
 			}
 		}
 		
 		// right bank validation
 				if(rightBankCrossers.size() == 2) {
-					if(Math.abs(rightBankCrossers.get(0).getEatingRank() - rightBankCrossers.get(0).getEatingRank()) == 1) {
+					if(Math.abs(rightBankCrossers.get(0).getEatingRank() - rightBankCrossers.get(1).getEatingRank()) == 1) {
 						return false;
 					}
 				}
@@ -38,8 +45,11 @@ public class StoryOneCrossingStrategy implements ICrossingStrategy {
 
 	@Override
 	public List<ICrosser> getInitialCrossers() {
-		// TODO Auto-generated method stub
-		return null;
+		initialCrossers.add(farmer);
+		initialCrossers.add(carnivore);
+		initialCrossers.add(herbivore);
+		initialCrossers.add(plant);
+		return initialCrossers;
 	}
 
 	@Override
