@@ -40,12 +40,9 @@ public class NewGameController implements Initializable {
 	
 	public void startNewGame(ActionEvent event) throws IOException {
 		if(choiceBox.getSelectionModel().getSelectedItem().equals("Story One")) {
-			StoryOneGui game = new StoryOneGui();
-			game.start((Stage) ((Node) event.getSource()).getScene().getWindow());
+			
 		}
 		else {
-			StoryTwoGui game = new StoryTwoGui();
-			game.start((Stage) ((Node) event.getSource()).getScene().getWindow());
 		}
 	}
 	
