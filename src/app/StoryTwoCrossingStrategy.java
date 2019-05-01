@@ -5,11 +5,12 @@ import java.util.List;
 
 public class StoryTwoCrossingStrategy implements ICrossingStrategy {
 	Instructions instructions;
-	ICrosser farmer1 = new Farmer();
-	ICrosser farmer2 = new Farmer();
-	ICrosser farmer3 = new Farmer();
-	ICrosser farmer4 = new Farmer();
-	ICrosser herbivore = new Herbivore();
+	CrosserFactory crosserFactory = new CrosserFactory();
+	ICrosser farmer1 = crosserFactory.newCrosser("FARMER",90);
+	ICrosser farmer2 = crosserFactory.newCrosser("FARMER",80);
+	ICrosser farmer3 = crosserFactory.newCrosser("FARMER",60);
+	ICrosser farmer4 = crosserFactory.newCrosser("FARMER",40);
+	ICrosser herbivore = crosserFactory.newCrosser("HERBIVORE",20);
 	ArrayList<ICrosser> initialCrossers = new ArrayList<ICrosser>();
 	
 	public StoryTwoCrossingStrategy() {
