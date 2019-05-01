@@ -1,10 +1,17 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StoryTwoCrossingStrategy implements ICrossingStrategy {
 	Instructions instructions;
-
+	ICrosser farmer1 = new Farmer();
+	ICrosser farmer2 = new Farmer();
+	ICrosser farmer3 = new Farmer();
+	ICrosser farmer4 = new Farmer();
+	ICrosser herbivore = new Herbivore();
+	ArrayList<ICrosser> initialCrossers = new ArrayList<ICrosser>();
+	
 	public StoryTwoCrossingStrategy() {
 		instructions = new StoryTwoInstructions();
 	}
@@ -29,8 +36,13 @@ public class StoryTwoCrossingStrategy implements ICrossingStrategy {
 
 	@Override
 	public List<ICrosser> getInitialCrossers() {
-		// TODO Auto-generated method stub
-		return null;
+		initialCrossers.add(farmer1);
+		initialCrossers.add(farmer2);
+		initialCrossers.add(farmer3);
+		initialCrossers.add(farmer4);
+		initialCrossers.add(herbivore);
+		return initialCrossers;
+		
 	}
 
 	@Override

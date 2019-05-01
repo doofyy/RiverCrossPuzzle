@@ -28,7 +28,10 @@ private ICrossingStrategy crossingStrategy;
 
 	@Override
 	public void resetGame() {
-		// TODO Auto-generated method stub
+		numberOfSails = 0;
+		rightBankCrossers.clear();
+		boatRiders.clear();
+		leftBankCrossers = (ArrayList<ICrosser>) crossingStrategy.getInitialCrossers();
 		
 	}
 

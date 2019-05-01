@@ -12,6 +12,7 @@ public class StoryTwoGui {
 		Group root = new Group();
 		Canvas canvas = new Canvas(1280,720); 
 		GraphicsContext gc = canvas.getGraphicsContext2D();
+		gc.fillRect(0, 0, 1280, 720);
 		root.getChildren().add(canvas);
 		Scene scene = new Scene(root,1280,720);
 		arg0.setScene(scene);
