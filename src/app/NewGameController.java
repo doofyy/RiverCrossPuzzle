@@ -37,13 +37,18 @@ public class NewGameController implements Initializable {
 		choiceBox.setValue("Story One");
 		
 	}
-	
+
 	public void startNewGame(ActionEvent event) throws IOException {
+        //opens story 1 gui
 		if(choiceBox.getSelectionModel().getSelectedItem().equals("Story One")) {
-			
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Parent root = FXMLLoader.load(getClass().getResource("Story1.fxml"));
+			Scene scene = new Scene(root, 800, 600);
+			window.setScene(scene);
+			window.show();
 		}
 		else {
+			System.out.println("opens story 2");
 		}
 	}
-	
 }
