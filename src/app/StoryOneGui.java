@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+@SuppressWarnings("unused")
 public class StoryOneGui {
 
 	public void start(Stage arg0){

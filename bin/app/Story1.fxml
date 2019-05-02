@@ -9,31 +9,29 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StoryOneController">
       <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <Image url="@../images/background.png" />
+               <Image url="@../../background.png" />
       </ImageView>
-       <ImageView fx:id="boat" fitHeight="110.0" fitWidth="443.0" layoutX="150.0" layoutY="470.0" nodeOrientation="RIGHT_TO_LEFT">
-              <Image url="@../images/carnivore.png" />
+       <ImageView fx:id="boatImageView" fitHeight="110.0" fitWidth="443.0" layoutX="150.0" layoutY="470.0" nodeOrientation="RIGHT_TO_LEFT">
+              <Image url="@../../carnivore.png" />
        </ImageView>
       <Group fx:id="shalabyGroup" layoutX="235.0" layoutY="396.0" onMouseClicked="#shalabyClick">
-             <ImageView fx:id="shalaby" fitHeight="100.0" fitWidth="100.0">
-                    <Image url="@../images/carnivore2.png" />
+             <ImageView fx:id="shalabyImageView" fitHeight="100.0" fitWidth="100.0">
+                    <Image url="@../../carnivore2.png" />
              </ImageView>
             <Label text="shalaby" />
       </Group>
       <Group fx:id="chickenGroup" layoutX="163.0" layoutY="431.0" onMouseClicked="#chickenClick">
-             <ImageView fx:id="chicken" fitHeight="69.0" fitWidth="63.0" layoutX="9.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT">
-                    <Image url="@../images/Chicken.png" />
+             <ImageView fx:id="farkhaImageView" fitHeight="69.0" fitWidth="63.0" layoutX="9.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT">
              </ImageView>
             <Label layoutY="-8.0" text="chicken" />
       </Group>
       <Group fx:id="oshbGroup" layoutX="119.0" layoutY="479.0" onMouseClicked="#oshbClick">
-             <ImageView fitHeight="50.0" fitWidth="50.0">
-                    <Image url="@../images/oshb.png" />
+             <ImageView fx:id="oshbImageView" fitHeight="50.0" fitWidth="50.0">
              </ImageView>
             <Label layoutX="1.0" layoutY="-16.0" text="oshb" />
       </Group>
       <Group fx:id="farmerGroup" layoutX="70.0" layoutY="470.0" onMouseClicked="#farmerClick">
-             <ImageView fx:id="farmer" fitHeight="100.0" fitWidth="100.0" layoutX="-26.0" layoutY="-22.0">
+             <ImageView fx:id="farmerImageView" fitHeight="100.0" fitWidth="100.0" layoutX="-26.0" layoutY="-22.0">
              </ImageView>
             <Label layoutX="-6.0" layoutY="-50.0" prefHeight="28.0" prefWidth="61.0" text="farmer" />
       </Group>

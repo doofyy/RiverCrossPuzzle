@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 public class StoryTwoGui {
 	
+	@SuppressWarnings("unused")
 	public void start(Stage arg0){
 		Group root = new Group();
 		Canvas canvas = new Canvas(1280,720); 

@@ -17,21 +17,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
+@SuppressWarnings("unused")
 public class StoryOneController implements Initializable {
-    private ICrossingStrategy crossingStrategy;
+    @SuppressWarnings("unused")
+	private ICrossingStrategy crossingStrategy;
 
 
-    Farmer farmer1 = new Farmer(10);
+    private Farmer farmer1 = new Farmer(10);
+    private Carnivore shalaby1 = new Carnivore(10);
+    private Herbivore farkha1 = new Herbivore(10);
+    private  Plant oshb1 = new Plant(10);
+
     boolean isBoatOnLeftBank;
     int numberOfSails;
 
@@ -51,13 +52,15 @@ public class StoryOneController implements Initializable {
         crossingStrategy = new StoryOneCrossingStrategy();
     }
     @FXML
-    private ImageView boat;
+    private ImageView boatImageView;
     @FXML
-    private ImageView chicken;
+    private ImageView farkhaImageView;
     @FXML
-    private ImageView farmer;
+    private ImageView farmerImageView;
     @FXML
-    private ImageView shalaby;
+    private ImageView shalabyImageView;
+    @FXML
+    private ImageView oshbImageView;
     @FXML
     private Group shalabyGroup;
     @FXML
@@ -73,13 +76,14 @@ public class StoryOneController implements Initializable {
     @FXML
     private Button back;
 
-    private ArrayList<Group> crossersOnBoat = new ArrayList();
-    private ArrayList<Group> crossersOnLeft = new ArrayList();
-    private ArrayList<Group> crossersOnRight = new ArrayList();
+    private ArrayList<Group> crossersOnBoat = new ArrayList<Group>();
+    private ArrayList<Group> crossersOnLeft = new ArrayList<Group>();
+    private ArrayList<Group> crossersOnRight = new ArrayList<Group>();
 
     private boolean boatOnLeft;
 
-    @Override
+    @SuppressWarnings("unused")
+	@Override
     public void initialize(URL location, ResourceBundle resources) {
         crossersOnLeft.add(shalabyGroup);
         crossersOnLeft.add(oshbGroup);
@@ -87,25 +91,14 @@ public class StoryOneController implements Initializable {
         crossersOnLeft.add(chickenGroup);
         boatOnLeft = true;
 
-
-
-        Image image1  = SwingFXUtils.toFXImage(farmer1.getImages()[0], null);
-        //Image image2 = new Image("/Farmer.png");
-        farmer.setImage(image1);
-
-        Farmer fam = new Farmer(10);
-        Carnivore mon = new Carnivore(10);
-        Herbivore sheep = new Herbivore(10);
-        Stage stage = new Stage();
-        ImageView imv = new ImageView();
-        ImageView imv2 = new ImageView();
-        ImageView imv3 = new ImageView();
-        /*Image image = SwingFXUtils.toFXImage(fam.getImages()[0], null);
-        Image image3 = SwingFXUtils.toFXImage(mon.getImages()[0], null);
-        Image image2 = SwingFXUtils.toFXImage(sheep.getImages()[0], null);
-        farmer.setImage(image);*/
-       // imv2.setImage(image2);
-       // imv3.setImage(image3);
+        Image farmerImage  = SwingFXUtils.toFXImage(farmer1.getImages()[0], null);
+        Image farkhaImage  = SwingFXUtils.toFXImage(farkha1.getImages()[0], null);
+        Image shalabyImage  = SwingFXUtils.toFXImage(shalaby1.getImages()[0], null);
+        Image oshbImage  = SwingFXUtils.toFXImage(oshb1.getImages()[0], null);
+        farmerImageView.setImage(farmerImage);
+        oshbImageView.setImage(oshbImage);
+        farkhaImageView.setImage(farkhaImage);
+        shalabyImageView.setImage(shalabyImage);
     }
 
     @FXML
@@ -150,7 +143,7 @@ public class StoryOneController implements Initializable {
               rotateTransition.setByAngle(360);
               translateTransition.play();
               rotateTransition.play();
-              farmer.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+              farmerImageView.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
               crossersOnBoat.remove(farmerGroup);
               crossersOnRight.add(farmerGroup);
           }
@@ -162,7 +155,7 @@ public class StoryOneController implements Initializable {
                 translateTransition.play();
                 rotateTransition.setByAngle(-360);
                 rotateTransition.play();
-                farmer.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+                farmerImageView.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
                 crossersOnBoat.add(farmerGroup);
                 crossersOnRight.remove(farmerGroup);
             }
@@ -273,7 +266,7 @@ public class StoryOneController implements Initializable {
                 rotateTransition.setByAngle(360);
                 translateTransition.play();
                 rotateTransition.play();
-                chicken.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+                farkhaImageView.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
                 crossersOnBoat.remove(chickenGroup);
                 crossersOnRight.add(chickenGroup);
             }
@@ -285,7 +278,7 @@ public class StoryOneController implements Initializable {
                 rotateTransition.setByAngle(-360);
                 translateTransition.play();
                 rotateTransition.play();
-                chicken.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                farkhaImageView.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
                 crossersOnBoat.add(chickenGroup);
                 crossersOnRight.remove(chickenGroup);
             }
@@ -335,7 +328,7 @@ public class StoryOneController implements Initializable {
                 rotateTransition.setByAngle(360);
                 translateTransition.play();
                 rotateTransition.play();
-                shalaby.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                shalabyImageView.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
                 crossersOnBoat.remove(shalabyGroup);
                 crossersOnRight.add(shalabyGroup);
             }
@@ -347,7 +340,7 @@ public class StoryOneController implements Initializable {
                 rotateTransition.setByAngle(-360);
                 translateTransition.play();
                 rotateTransition.play();
-                shalaby.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+                shalabyImageView.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
                 crossersOnBoat.add(shalabyGroup);
                 crossersOnRight.remove(shalabyGroup);
             }
@@ -363,7 +356,7 @@ public class StoryOneController implements Initializable {
         if(crossersOnBoat.contains(farmerGroup)){
             TranslateTransition translateTransition = new TranslateTransition();
             translateTransition.setDuration(Duration.seconds(1));
-            translateTransition.setNode(boat);
+            translateTransition.setNode(boatImageView);
 
             if(boatOnLeft){
                 translateTransition.setByX(200);
