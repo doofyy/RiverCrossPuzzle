@@ -2,6 +2,7 @@ package app;
 
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +13,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,6 +30,8 @@ import java.util.ResourceBundle;
 public class StoryOneController implements Initializable {
     private ICrossingStrategy crossingStrategy;
 
+
+    Farmer farmer1 = new Farmer(10);
     boolean isBoatOnLeftBank;
     int numberOfSails;
 
@@ -79,6 +86,26 @@ public class StoryOneController implements Initializable {
         crossersOnLeft.add(farmerGroup);
         crossersOnLeft.add(chickenGroup);
         boatOnLeft = true;
+
+
+
+        Image image1  = SwingFXUtils.toFXImage(farmer1.getImages()[0], null);
+        //Image image2 = new Image("/Farmer.png");
+        farmer.setImage(image1);
+
+        Farmer fam = new Farmer(10);
+        Carnivore mon = new Carnivore(10);
+        Herbivore sheep = new Herbivore(10);
+        Stage stage = new Stage();
+        ImageView imv = new ImageView();
+        ImageView imv2 = new ImageView();
+        ImageView imv3 = new ImageView();
+        /*Image image = SwingFXUtils.toFXImage(fam.getImages()[0], null);
+        Image image3 = SwingFXUtils.toFXImage(mon.getImages()[0], null);
+        Image image2 = SwingFXUtils.toFXImage(sheep.getImages()[0], null);
+        farmer.setImage(image);*/
+       // imv2.setImage(image2);
+       // imv3.setImage(image3);
     }
 
     @FXML
@@ -369,7 +396,7 @@ public class StoryOneController implements Initializable {
     }
    @FXML
     private void resetAction(ActionEvent event) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("animationTest.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getResource("Story1.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(parent));
         stage.show();
