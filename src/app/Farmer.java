@@ -3,25 +3,19 @@ package app;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 public class Farmer implements ICrosser {
 	private double weight;
 	private static final int eatingRank = 4;
+	private String label;
 	
-	public static int getEatingrank() {
-		return eatingRank;
-	}
-
-
+	public static int getEatingrank() { return eatingRank; }
 
 	public Farmer(double weight) {
 		super();
 		this.weight = weight;
 	}
-
-
 
 	@Override
 	public boolean canSail() {
@@ -52,20 +46,17 @@ public class Farmer implements ICrosser {
 
 	@Override
 	public ICrosser makeCopy() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Farmer(this.weight);
 	}
 
 	@Override
 	public void setLabelToBeShown(String label) {
-		// TODO Auto-generated method stub
-		
+		this.label = label;
 	}
 
 	@Override
 	public String getLabelToBeShown() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return label;
 	}
-
 }

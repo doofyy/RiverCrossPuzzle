@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StoryOneController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StoryGUI">
       <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <Image url="@../../background.png" />
       </ImageView>
@@ -15,9 +15,7 @@
               <Image url="@../../carnivore.png" />
        </ImageView>
       <Group fx:id="shalabyGroup" layoutX="235.0" layoutY="396.0" onMouseClicked="#shalabyClick">
-             <ImageView fx:id="shalabyImageView" fitHeight="100.0" fitWidth="100.0">
-                    <Image url="@../../carnivore2.png" />
-             </ImageView>
+             <ImageView fx:id="shalabyImageView" fitHeight="100.0" fitWidth="100.0" />
             <Label text="shalaby" />
       </Group>
       <Group fx:id="chickenGroup" layoutX="163.0" layoutY="431.0" onMouseClicked="#chickenClick">
@@ -38,4 +36,10 @@
       <Button fx:id="go" layoutX="505.0" layoutY="191.0" mnemonicParsing="false" onAction="#goAction" text="Go" />
       <Button fx:id="reset" layoutX="593.0" layoutY="191.0" mnemonicParsing="false" onAction="#resetAction" text="reset" />
       <Button fx:id="back" layoutX="684.0" layoutY="191.0" mnemonicParsing="false" onAction="#backAction" text="back" />
+   <Group fx:id="crosser5Group" layoutX="326.0" layoutY="406.0" onMouseClicked="#farmerClick">
+      <children>
+         <ImageView fx:id="crosser5ImageView" fitHeight="100.0" fitWidth="100.0" layoutX="-26.0" layoutY="-22.0" />
+         <Label layoutX="-6.0" layoutY="-50.0" prefHeight="28.0" prefWidth="61.0" />
+      </children>
+   </Group>
 </AnchorPane>

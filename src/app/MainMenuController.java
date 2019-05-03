@@ -26,7 +26,7 @@ public class MainMenuController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Image image = new Image(new File("mainMenuImage.png").toURI().toString());
+   		Image image = new Image(new File("mainMenuImage.png").toURI().toString());
 		imageView.setImage(image);
 	}
 
@@ -50,4 +50,5 @@ public class MainMenuController implements Initializable {
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.close();
 	}
+
 }

@@ -10,6 +10,8 @@ public class Plant implements ICrosser {
 
 	private double weight;
 	public static final int eatingRank = 0;
+	private String label;
+	
 	public Plant(double weight) {
 		super();
 		this.weight = weight;
@@ -46,20 +48,18 @@ public class Plant implements ICrosser {
 
 	@Override
 	public ICrosser makeCopy() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Plant(this.weight);
 	}
 
 	@Override
 	public void setLabelToBeShown(String label) {
-		// TODO Auto-generated method stub
+		this.label = label;
 		
 	}
 
 	@Override
 	public String getLabelToBeShown() {
-		// TODO Auto-generated method stub
-		return null;
+		return label;
 	}
 	
 }
