@@ -8,12 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StoryGUI">
-      <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <Image url="@../../background.png" />
-      </ImageView>
+      <ImageView fx:id="bgImageView" fitHeight="600.0" fitWidth="800.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <image>
+         <Image url="@../../background.png" />
+      </image></ImageView>
        <ImageView fx:id="boatImageView" fitHeight="110.0" fitWidth="443.0" layoutX="150.0" layoutY="470.0" nodeOrientation="RIGHT_TO_LEFT">
-              <Image url="@../../carnivore.png" />
-       </ImageView>
+      <image>
+         <Image url="@../../carnivore.png" />
+      </image></ImageView>
       <Group fx:id="shalabyGroup" layoutX="235.0" layoutY="396.0" onMouseClicked="#shalabyClick">
              <ImageView fx:id="shalabyImageView" fitHeight="100.0" fitWidth="100.0" />
             <Label text="shalaby" />

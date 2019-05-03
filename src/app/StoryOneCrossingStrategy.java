@@ -28,13 +28,12 @@ public class StoryOneCrossingStrategy implements ICrossingStrategy {
 				return false;
 			}
 		}
-		
 		// right bank validation
-				if(rightBankCrossers.size() == 2) {
-					if(Math.abs(rightBankCrossers.get(0).getEatingRank() - rightBankCrossers.get(1).getEatingRank()) == 1) {
-						return false;
-					}
-				}
+		if(rightBankCrossers.size() == 2) {
+			if(Math.abs(rightBankCrossers.get(0).getEatingRank() - rightBankCrossers.get(1).getEatingRank()) == 1) {
+				return false;
+			}
+		}
 		return true;
 	}
 

@@ -33,34 +33,21 @@ public class StoryGUI implements Initializable {
 
 	GameController controller = GameController.getInstance();
 
-	@FXML
-	private ImageView boatImageView;
-	@FXML
-	private ImageView farkhaImageView;
-	@FXML
-	private ImageView farmerImageView;
-	@FXML
-	private ImageView shalabyImageView;
-	@FXML
-	private ImageView oshbImageView;
-	@FXML
-	private ImageView crosser5ImageView;
-	@FXML
-	private Group shalabyGroup;
-	@FXML
-	private Group oshbGroup;
-	@FXML
-	private Group farmerGroup;
-	@FXML
-	private Group chickenGroup;
-	@FXML
-	private Group crosser5Group;
-	@FXML
-	private Button go;
-	@FXML
-	private Button reset;
-	@FXML
-	private Button back;
+	@FXML private ImageView boatImageView;
+	@FXML private ImageView bgImageView;
+	@FXML private ImageView farkhaImageView;
+	@FXML private ImageView farmerImageView;
+	@FXML private ImageView shalabyImageView;
+	@FXML private ImageView oshbImageView;
+	@FXML private ImageView crosser5ImageView;
+	@FXML private Group shalabyGroup;
+	@FXML private Group oshbGroup;
+	@FXML private Group farmerGroup;
+	@FXML private Group chickenGroup;
+	@FXML private Group crosser5Group;
+	@FXML private Button go;
+	@FXML private Button reset;
+	@FXML private Button back;
 
 	private ArrayList<Group> crossersOnBoat = new ArrayList<Group>();
 	private ArrayList<Group> crossersOnLeft = new ArrayList<Group>();
@@ -104,6 +91,9 @@ public class StoryGUI implements Initializable {
 		crosser4 = controller.leftBankCrossers.get(3);
 		Image oshbImage = SwingFXUtils.toFXImage(crosser4.getImages()[0], null);
 		oshbImageView.setImage(oshbImage);
+
+		boatImageView.setImage(new Image(new File("carnivore.png").toURI().toString()));
+		bgImageView.setImage(new Image(new File("background.png").toURI().toString()));
 		
 		try {
 			crosser5 = controller.leftBankCrossers.get(4);
