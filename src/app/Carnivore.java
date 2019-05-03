@@ -9,7 +9,6 @@ import javax.imageio.ImageIO;
 public class Carnivore implements ICrosser {
 
 	private double weight;
-	//why is this public
 	public static final int eatingRank = 2;
 	private String label;
 	
@@ -41,7 +40,11 @@ public class Carnivore implements ICrosser {
 		BufferedImage[] image = new BufferedImage[8];
 		image[0] = new BufferedImage(226, 247, BufferedImage.TYPE_INT_ARGB);
 		try {
-			image[0] = ImageIO.read(new File("carnivore2.png"));
+			int x = (int)(Math.random() * 2);
+			if(x==0)
+				image[0] = ImageIO.read(new File("carnivore2.png"));
+			else 
+				image[0] = ImageIO.read(new File("Wolf.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

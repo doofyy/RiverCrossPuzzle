@@ -49,6 +49,7 @@ public class StoryGUI implements Initializable {
 	@FXML private ImageView undoImageView;
 	@FXML private ImageView redoImageView;
 	@FXML private ImageView backImageView;
+	@FXML private ImageView instructionsImageView;
 	@FXML private Group shalabyGroup;
 	@FXML private Group oshbGroup;
 	@FXML private Group farmerGroup;
@@ -65,6 +66,7 @@ public class StoryGUI implements Initializable {
 	@FXML private Label farkhalabel;
 	@FXML private Label shalabylabel;
 	@FXML private Label crosser5label;
+	@FXML private Label scoreLabel;
 
 	private ArrayList<Group> crossersOnBoat = new ArrayList<Group>();
 	private ArrayList<Group> crossersOnLeft = new ArrayList<Group>();
@@ -92,34 +94,40 @@ public class StoryGUI implements Initializable {
 		crossersOnLeft.add(chickenGroup);
 		crossersOnLeft.add(crosser5Group);
 		boatOnLeft = true;
-		
+
 		crosser1 = controller.leftBankCrossers.get(0);
 		Image farmerImage = SwingFXUtils.toFXImage(crosser1.getImages()[0], null);
 		farmerImageView.setImage(farmerImage);
-		
+		farmerlabel.setText(crosser1.getLabelToBeShown());
+
 		crosser2 = controller.leftBankCrossers.get(1);
 		Image shalabyImage = SwingFXUtils.toFXImage(crosser2.getImages()[0], null);
 		shalabyImageView.setImage(shalabyImage);
+		shalabylabel.setText(crosser2.getLabelToBeShown());
 
 		crosser3 = controller.leftBankCrossers.get(2);
 		Image farkhaImage = SwingFXUtils.toFXImage(crosser3.getImages()[0], null);
 		farkhaImageView.setImage(farkhaImage);
+		farkhalabel.setText(crosser3.getLabelToBeShown());
 
 		crosser4 = controller.leftBankCrossers.get(3);
 		Image oshbImage = SwingFXUtils.toFXImage(crosser4.getImages()[0], null);
 		oshbImageView.setImage(oshbImage);
+		oshblabel.setText(crosser4.getLabelToBeShown());
 
 		boatImageView.setImage(new Image(new File("carnivore.png").toURI().toString()));
 		bgImageView.setImage(new Image(new File("background.png").toURI().toString()));
 		backImageView.setImage(new Image(new File("back.png").toURI().toString()));
 		undoImageView.setImage(new Image(new File("undo.png").toURI().toString()));
 		redoImageView.setImage(new Image(new File("undo.png").toURI().toString()));
+		instructionsImageView.setImage(new Image(new File("instructions.png").toURI().toString()));
 		redoImageView.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-		
+
 		try {
 			crosser5 = controller.leftBankCrossers.get(4);
 			Image crosser5img = SwingFXUtils.toFXImage(crosser5.getImages()[0], null);
 			crosser5ImageView.setImage(crosser5img);
+			crosser5label.setText(crosser5.getLabelToBeShown());
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("no");
 			crosser5Group.setVisible(false);
@@ -170,15 +178,15 @@ public class StoryGUI implements Initializable {
 				crossersOnBoat.remove(farmerGroup);
 				crossersOnRight.add(farmerGroup);
 
-				if(crossersOnRight.size() == 4 && crosser5ImageView.isDisabled()){
+				if(crossersOnRight.size() == 4 && crossingStrategy instanceof StoryOneCrossingStrategy){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 				else if(crossersOnRight.size() == 5){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 			}
 		} else if (crossersOnRight.contains(farmerGroup)) {
@@ -245,15 +253,15 @@ public class StoryGUI implements Initializable {
 				crossersOnBoat.remove(oshbGroup);
 				crossersOnRight.add(oshbGroup);
 
-				if(crossersOnRight.size() == 4 && crosser5ImageView.isDisabled()){
+				if(crossersOnRight.size() == 4 && crossingStrategy instanceof StoryOneCrossingStrategy){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 				else if(crossersOnRight.size() == 5){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 			}
 		} else if (crossersOnRight.contains(oshbGroup)) {
@@ -317,15 +325,15 @@ public class StoryGUI implements Initializable {
 				crossersOnBoat.remove(chickenGroup);
 				crossersOnRight.add(chickenGroup);
 
-				if(crossersOnRight.size() == 4 && crosser5ImageView.isDisabled()){
+				if(crossersOnRight.size() == 4 && crossingStrategy instanceof StoryOneCrossingStrategy){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 				else if(crossersOnRight.size() == 5){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 			}
 		} else if (crossersOnRight.contains(chickenGroup) && !boatOnLeft) {
@@ -388,15 +396,15 @@ public class StoryGUI implements Initializable {
 				crossersOnBoat.remove(shalabyGroup);
 				crossersOnRight.add(shalabyGroup);
 
-				if(crossersOnRight.size() == 4 && crosser5ImageView.isDisabled()){
+				if(crossersOnRight.size() == 4 && crossingStrategy instanceof StoryOneCrossingStrategy){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 				else if(crossersOnRight.size() == 5){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 			}
 		} else if (crossersOnRight.contains(shalabyGroup)) {
@@ -428,8 +436,7 @@ public class StoryGUI implements Initializable {
 
 		if (crossersOnLeft.contains(crosser5Group) && boatOnLeft) {
 			if (crossersOnBoat.size() < 2) {
-				translateTransition.setByX(20);
-				translateTransition.setByY(15);
+				translateTransition.setByY(50);
 				rotateTransition.setByAngle(360);
 				translateTransition.play();
 				rotateTransition.play();
@@ -441,8 +448,8 @@ public class StoryGUI implements Initializable {
 			}
 		} else if (crossersOnBoat.contains(crosser5Group)) {
 			if (boatOnLeft) {
-				translateTransition.setByX(-20);
-				translateTransition.setByY(-15);
+				//270, 380
+				translateTransition.setByY(-50);
 				rotateTransition.setByAngle(-360);
 				translateTransition.play();
 				rotateTransition.play();
@@ -459,15 +466,15 @@ public class StoryGUI implements Initializable {
 				crossersOnBoat.remove(crosser5Group);
 				crossersOnRight.add(crosser5Group);
 
-				if(crossersOnRight.size() == 4 && crosser5ImageView.isDisabled()){
+				if(crossersOnRight.size() == 4 && crossingStrategy instanceof StoryOneCrossingStrategy){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 				else if(crossersOnRight.size() == 5){
 					System.out.println("K.O");
 					alertBox("gg wp", "ggwp.png");
-					//backToMain(event);
+					reset.fire();
 				}
 			}
 		} else if (crossersOnRight.contains(crosser5Group)) {

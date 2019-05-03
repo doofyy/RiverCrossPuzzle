@@ -12,36 +12,21 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/app/Story1.fxml">
-                <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-                <provider editor-type-id="text-editor">
-                  <state relative-caret-position="-777">
-                    <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/StoryGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="477" column="43" lean-forward="true" selection-start-line="477" selection-start-column="43" selection-end-line="477" selection-end-column="43" />
+            <state relative-caret-position="3360">
+              <caret line="591" column="5" lean-forward="true" selection-start-line="591" selection-start-column="5" selection-end-line="591" selection-end-column="5" />
               <folding>
+                <element signature="e#4411#6798#0" />
+                <element signature="e#6801#9148#0" />
+                <element signature="e#9151#11555#0" />
+                <element signature="e#11558#13947#0" />
+                <element signature="e#12755#14958#0" />
                 <element signature="e#13627#16611#0" />
-                <element signature="e#20160#20161#0" expanded="true" />
+                <element signature="e#20578#20579#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,10 +44,14 @@
       <find>shalaby</find>
       <find>setNode</find>
       <find>setNodeOri</find>
+      <find>if(crossersOnRight.size() == 4 &amp;&amp; !crosser5ImageView.isVisible()){</find>
+      <find>//backtomain(event);</find>
     </findStrings>
     <replaceStrings>
       <replace>crosser5Ima</replace>
       <replace>crosser5ImageView</replace>
+      <replace>if(crossersOnRight.size() == 4 &amp;&amp; crossingStrategy instanceof StoryOneCrossingStrategy){</replace>
+      <replace>reset.fire();</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -75,16 +64,16 @@
         <option value="$PROJECT_DIR$/src/app/StoryOneCrossingStrategy.java" />
         <option value="$PROJECT_DIR$/bin/app/Story1.fxml" />
         <option value="$PROJECT_DIR$/src/app/GameController.java" />
-        <option value="$PROJECT_DIR$/src/app/Story1.fxml" />
         <option value="$PROJECT_DIR$/src/app/StoryGUI.java" />
+        <option value="$PROJECT_DIR$/src/app/Story1.fxml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="134" />
-    <option name="y" value="111" />
-    <option name="width" value="1346" />
-    <option name="height" value="728" />
+    <option name="x" value="576" />
+    <option name="y" value="62" />
+    <option name="width" value="1017" />
+    <option name="height" value="630" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -375,21 +364,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/StoryGUI1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="135" column="5" lean-forward="true" selection-start-line="84" selection-start-column="4" selection-end-line="135" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/Story1.fxml">
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="-777">
-          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
+        <state relative-caret-position="24">
+          <caret line="38" column="17" lean-forward="true" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/StoryGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="477" column="43" lean-forward="true" selection-start-line="477" selection-start-column="43" selection-end-line="477" selection-end-column="43" />
+        <state relative-caret-position="3360">
+          <caret line="591" column="5" lean-forward="true" selection-start-line="591" selection-start-column="5" selection-end-line="591" selection-end-column="5" />
           <folding>
+            <element signature="e#4411#6798#0" />
+            <element signature="e#6801#9148#0" />
+            <element signature="e#9151#11555#0" />
+            <element signature="e#11558#13947#0" />
+            <element signature="e#12755#14958#0" />
             <element signature="e#13627#16611#0" />
-            <element signature="e#20160#20161#0" expanded="true" />
+            <element signature="e#20578#20579#0" expanded="true" />
           </folding>
         </state>
       </provider>
