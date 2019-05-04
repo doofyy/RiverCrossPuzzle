@@ -128,6 +128,7 @@ public class GameController implements IRiverCrossingController {
 				boatRiders.remove(x);
 			}
 			undoStack.remove(move);
+			boatRiders.clear();
 			return false;
 		} else {
 			return true;
@@ -187,90 +188,166 @@ public class GameController implements IRiverCrossingController {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document document = builder.newDocument();
-	
 			StringBuilder xmlStringBuilder = new StringBuilder();
-
 			xmlStringBuilder.append("<?xml version=?> <class> </class>");
-			ByteArrayInputStream input = new ByteArrayInputStream(xmlStringBuilder.toString().getBytes("UTF-8"));
-			//document = builder.parse("SavedGame.xml");
-
+			new ByteArrayInputStream(xmlStringBuilder.toString().getBytes("UTF-8"));
 			Element Story = document.createElement("Story");
 			Element RightBankers = document.createElement("RightBankers");
 			Element LeftBankers = document.createElement("LeftBankers");
 			Element Score = document.createElement("Score");
 			Element BoatPosition = document.createElement("BoatPosition");
-
 			document.appendChild(Story);
-			Story.appendChild(RightBankers);
-			Story.appendChild(LeftBankers);
-			Story.appendChild(Score);
-			Story.appendChild(BoatPosition);
+			Element StoryLevel = document.createElement("StoryLevel");
 
-			if (crossingStrategy instanceof StoryOneCrossingStrategy) {
-				Story.appendChild(document.createTextNode("Story One"));
-				for (ICrosser x : rightBankCrossers) {
-					if (x instanceof Plant)
-						RightBankers.appendChild(document.createElement("Plant"));
-					else if (x instanceof Carnivore)
-						RightBankers.appendChild(document.createElement("Carnicore"));
-					else if (x instanceof Herbivore)
-						RightBankers.appendChild(document.createElement("Herbivore"));
-					else
-						RightBankers.appendChild(document.createElement("Farmer"));
+			Story.appendChild(StoryLevel);
+
+			if (this.crossingStrategy instanceof StoryOneCrossingStrategy) {
+				StoryLevel.appendChild(document.createTextNode("Story One,"));
+				Story.appendChild(Score);
+				Score.appendChild(document.createTextNode(Integer.toString(numberOfSails)+","));
+				Story.appendChild(BoatPosition);
+				BoatPosition.appendChild(document.createTextNode(Boolean.toString(isBoatOnLeftBank)+","));
+
+				Story.appendChild(LeftBankers);
+
+				for (ICrosser x: leftBankCrossers) {
+					if (x instanceof Plant) {
+						LeftBankers.appendChild(document.createTextNode("LEFT Plant,"));
+					} else if (x instanceof Carnivore) {
+						LeftBankers.appendChild(document.createTextNode("LEFT Carnicore,"));
+					} else if (x instanceof Herbivore) {
+						LeftBankers.appendChild(document.createTextNode("LEFT Herbivore,"));
+					} else {
+						LeftBankers.appendChild(document.createTextNode("LEFT Farmer,"));
+					}
 				}
+				Story.appendChild(RightBankers);
 
-				for (ICrosser x : leftBankCrossers) {
-					if (x instanceof Plant)
-						LeftBankers.appendChild(document.createElement("Plant"));
-					else if (x instanceof Carnivore)
-						LeftBankers.appendChild(document.createElement("Carnicore"));
-					else if (x instanceof Herbivore)
-						LeftBankers.appendChild(document.createElement("Herbivore"));
-					else
-						LeftBankers.appendChild(document.createElement("Farmer"));
+				for (ICrosser x: rightBankCrossers) {
+					if (x instanceof Plant) {
+						RightBankers.appendChild(document.createTextNode("RIGHT Plant,"));
+					} else if (x instanceof Carnivore) {
+						RightBankers.appendChild(document.createTextNode("RIGHT Carnicore,"));
+					} else if (x instanceof Herbivore) {
+						RightBankers.appendChild(document.createTextNode("RIGHT Herbivore,"));
+					} else {
+						RightBankers.appendChild(document.createTextNode("RIGHT Farmer,"));
+					}
+				}
+				RightBankers.appendChild(document.createTextNode(","));
+
+			} else {
+				Story.appendChild(document.createTextNode("Story Two,"));
+				Story.appendChild(Score);
+				Score.appendChild(document.createTextNode(Integer.toString(numberOfSails)+","));
+				Story.appendChild(BoatPosition);
+				BoatPosition.appendChild(document.createTextNode(Boolean.toString(isBoatOnLeftBank)+","));
+				Story.appendChild(LeftBankers);
+				for (ICrosser x: rightBankCrossers) {
+					String w = Double.toString(x.getWeight());
+					RightBankers.appendChild(document.createTextNode(w));
+				}
+				Story.appendChild(RightBankers);
+				for (ICrosser x: leftBankCrossers) {
+					String w = Double.toString(x.getWeight());
+					LeftBankers.appendChild(document.createTextNode(w));
 				}
 			}
-
-			else {
-				Story.appendChild(document.createTextNode("Story Two"));
-				for (ICrosser x : rightBankCrossers) {
-					String w = Double.toString(x.getWeight());
-					RightBankers.appendChild(document.createElement(w));
-				}
-				for (ICrosser x : leftBankCrossers) {
-					String w = Double.toString(x.getWeight());
-					LeftBankers.appendChild(document.createElement(w));
-				}
-
-			}
-
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(document);
 			StreamResult streamResult = new StreamResult(new File("SavedGame.xml"));
-
-			// If you use
-			// StreamResult result = new StreamResult(System.out);
-			// the output will be pushed to the standard output ...
-			// You can use that for debugging
-
 			transformer.transform(domSource, streamResult);
-
 			System.out.println("Done creating XML File");
-
-		} catch (ParserConfigurationException pce) {
-			pce.printStackTrace();
-		} catch (TransformerException tfe) {
-			tfe.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		loadGame();
 	}
 
 	@Override
 	public void loadGame() {
+
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		try {
+			builder = factory.newDocumentBuilder();
+			Document document = builder.newDocument();
+			StringBuilder xmlStringBuilder = new StringBuilder();
+			document = builder.parse("SavedGame.xml");
+			Element Story = document.getDocumentElement();
+			int i;
+			String StoryData =  document.getElementsByTagName("Story").item(0).getTextContent();
+			System.out.println(StoryData);
+
+
+			ArrayList Data = new ArrayList();
+			for (String val: StoryData.split(",")) {
+				System.out.println(val);
+				Data.add(val);
+			}
+
+			String loadedstory=(String) Data.get(0);
+			String loadedscore = (String) Data.get(1);
+			String loadedboatonleft = (String) Data.get(2);
+			ArrayList loadedleft = new ArrayList();
+			ArrayList loadedright = new ArrayList();
+
+			if (loadedstory.equalsIgnoreCase("Story One"))
+			{
+				for (i=3;i<7;i++)
+				{
+					String banker = (String) Data.get(i);
+					String[] Banker = banker.split(" ");
+					if (Banker[0].equalsIgnoreCase("LEFT"))
+					{
+						loadedleft.add(Banker[1]);
+					}
+					else
+						loadedright.add(Banker[1]);
+				}
+			}
+			else {
+
+				for (i=3;i<8;i++)
+				{
+					String banker = (String) Data.get(i);
+					String[] Banker = banker.split(" ");
+					if (Banker[0].equalsIgnoreCase("LEFT"))
+					{
+						loadedleft.add(Banker[1]);
+					}
+					else
+						loadedright.add(Banker[1]);
+				}
+			}
+			/*//ArrayList RB = new ArrayList();
+			Node n = RightBankers.item(0);
+
+			Element eElement = (Element) n;
+
+			String usr = document.getElementsByTagName("leftBankers").item(0).getTextContent();
+			System.out.println(usr);
+
+			//n.getTextContent();
+			System.out.println("Hello");
+			System.out.println(n.getTextContent());
+			*/
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override

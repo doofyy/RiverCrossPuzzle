@@ -2,7 +2,7 @@ package app;
 
 public class StoryOneInstructions implements Instructions {
 	
-	String [] instructions;
+	String [] instructions = new String[4];
 	
 	public String[] getInstructions() {
 		instructions[0] = "A farmer wants to cross a river and take with him a carnivore, a herbivore and a plant.";

@@ -2,10 +2,10 @@ package app;
 
 public class StoryTwoInstructions implements Instructions {
 
-	String[] instructions;
+	String[] instructions = new String[4];
 
 	public String[] getInstructions() {
-		instructions[0] = "“Four farmers and their animal "
+		instructions[0] = "ï¿½Four farmers and their animal "
 				+ "need to cross a river in a small boat. "
 				+ "The weights of the farmers are 90 kg, "
 				+ "80 kg,60 kg and 40 kg respectively,"
